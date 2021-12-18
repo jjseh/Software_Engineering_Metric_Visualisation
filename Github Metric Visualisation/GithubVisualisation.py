@@ -40,6 +40,12 @@ def repositoriesPrint(repositories):
     # Show when Repository is created.
     print("Repository created on: ", repositories.repoCreated)
     print("")
+    # Show what language each Repository is mainly coded in
+    print("Language:", repositories.language)
+    print("")
+    # Stars
+    # Show what Repositories are stared and count of stars
+    print("Number of stars:", repositories.starCount)
 
 if __name__ == '__main__':
 
