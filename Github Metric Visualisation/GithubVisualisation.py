@@ -47,7 +47,36 @@ def repositoriesPrint(repositories):
     # Show what Repositories are stared and count of stars
     print("Number of stars:", repositories.starCount)
 
-if __name__ == '__main__':
+
+listOfRepositories = {} 
+languages = {}
+
+# Count the number of Repositories
+def addRepositoryToList(repositories):
+    # Catch Error 
+    try:
+        if repositories.get_commits() is not None:
+            commits = repositories.get_commits().totalCount
+            listOfRepositories[f"{repositories.name}"] = commits
+    except:
+        listOfRepositories[f"{repositories.name}"] = 0
+
+def addLanguagesOfRepositories(repositories):
+    if repositories is not None:
+        language = repositories.language
+        if language in languages:
+            languages[language] = languages[language] + 1
+
+def printRepoCommits(repositories):
+
+    try:
+        if repositories.get_commits() is not None:
+            commits = repositories.get_commits().totalCount
+    except:
+        print("The number of commits = 0")
+
+
+#if __name__ == '__main__':
 
 
 
