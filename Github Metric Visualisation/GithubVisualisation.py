@@ -34,7 +34,12 @@ def repositoriesPrint(repositories):
      try:
         print("License:", base64.b64decode(repositories.get_license().info.encode()).decode())
      except:
-       
+    print("Full name:", repositories.name)
+    print("")
+    # The date of when the repo was created
+    # Show when Repository is created.
+    print("Repository created on: ", repositories.repoCreated)
+    print("")
 
 if __name__ == '__main__':
 
