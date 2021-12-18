@@ -75,6 +75,19 @@ def printRepoCommits(repositories):
     except:
         print("The number of commits = 0")
 
+numberOfLanguages = []
+
+numberOfCommits = []
+
+# Count and add each Language to array.
+for lang in languages:
+    numberOfLanguages.append(languages[lang])
+
+# Count and add each Repository to array.
+for reps in listOfRepositories:
+    numberOfCommits.append(listOfRepositories[reps])
+
+
 
 #if __name__ == '__main__':
 
