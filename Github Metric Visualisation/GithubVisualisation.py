@@ -78,6 +78,14 @@ def printRepoCommits(repositories):
 numberOfLanguages = []
 
 numberOfCommits = []
+startCount = []
+# Count stars 
+for repository in githubUser.get_repos():
+    if repository.stargazers_count == 0:
+        startCount.append(0)
+
+    addRepositoryToList(repository)
+    addLanguagesOfRepositories(repository)
 
 # Count and add each Language to array.
 for lang in languages:
