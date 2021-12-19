@@ -158,7 +158,8 @@ if __name__ == '__main__':
         stackChart.add(name, startCount[count])
         count = count + 1
     stackChart.render_in_browser()
-    stackChart.render_to_file("starsChart.svg")
+    stackChart.render_to_file('OutputtedCharts/starsChart.svg')
+
 
     pieChart = pygal.Pie(inner_radius=.4, style = DRKS)
     pieChart.width = 1600
@@ -169,7 +170,7 @@ if __name__ == '__main__':
         pieChart.add(language, languages[language])
         numberofLang = numberofLang + 1
     pieChart.render_in_browser() 
-    pieChart.render_to_file("languagePieChart.svg")
+    pieChart.render_to_file('OutputtedCharts/languagePieChart.svg')
 
 
     barChart = pygal.Bar(set_Syling,style = DRKS)
@@ -177,4 +178,4 @@ if __name__ == '__main__':
     barChart.x_labels = namesOfRepos
     barChart.add("", numberOfCommits)
     barChart.render_in_browser()
-    barChart.render_to_file("commitsBarChart.svg")
+    barChart.render_to_file('OutputtedCharts/commitsBarChart.svg')
