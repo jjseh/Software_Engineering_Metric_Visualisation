@@ -153,3 +153,8 @@ if __name__ == '__main__':
         numberofLang = numberofLang + 1
     pieChart.render_in_browser()
 
+    barChart = pygal.Bar(style = DRKS)
+    barChart.x_labels = namesOfRepos
+    barChart.add("", numberOfCommits)
+    barChart.render_in_browser()
+
