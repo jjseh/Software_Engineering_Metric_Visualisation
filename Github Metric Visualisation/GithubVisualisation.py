@@ -4,8 +4,6 @@ import pygal
 from pygal.style import DarkSolarizedStyle as DRKS
 #import base64
 
-
-
 # Github Username
 # Get the URL to request
 # API call for username
@@ -15,6 +13,7 @@ from pygal.style import DarkSolarizedStyle as DRKS
 # Pretty print the JSON data/strings
 # pprint(collected_data)
 # 
+
 
 # Set the styling, used to visualise the collected data
 set_Syling = pygal.Config()
@@ -38,13 +37,16 @@ try:
     githubUser = accessToken.get_user(github_username)
     print("Valid Token : Accepted")
 except:
+    print("\n*****************************************************************************************\n ")
     print(" Invalid Credentials! ")
+    print(" Program will execute with invalid token. RateLimited!!!\n")
+    print("***************************************************************************************** ")
     accessToken = Github()
     githubUser = accessToken.get_user(github_username)
     
 
 print(" Program running......")
-
+print(" Program execution time is dependant on the number of repositories owned by searched github user.\n ")
 
 
 # Print Repository inforamtion
@@ -147,35 +149,57 @@ for reps in listOfRepositories:
     namesOfRepos.append(reps)
     numberOfCommits.append(listOfRepositories[reps])
 
-if __name__ == '__main__': 
-   
+
+
+# Make Data Visualisation
+if __name__ == '__main__':
+    
+    # Chart to Visualise number of Stars 
     stackChart = pygal.StackedBar(style = DRKS)
+    # Set Chart display
     stackChart.width = 1600
     stackChart.height = 740
+    # Title of chart
     stackChart.title = f"Number of Stars for each Github Repository owned by {githubUser.login}"
+    # Add data accessed from github onto chart
     count = 0
     for name in namesOfRepos:
         stackChart.add(name, startCount[count])
         count = count + 1
+    # Open bar chart in browser
     stackChart.render_in_browser()
+    # Save chart inside folder for easier viewing 
     stackChart.render_to_file('OutputtedCharts/starsChart.svg')
-
-
+  
+    # print(" ")
+    # Pie chart for Visualise Languagues count
     pieChart = pygal.Pie(inner_radius=.4, style = DRKS)
+    # Set chart display
     pieChart.width = 1600
     pieChart.height = 740
+    # Title of Pie Chart
     pieChart.title = f"Number of Github Repositories owned by {githubUser.login} using a certain Language."
+    # Add the data accessed from github onto pie chart
     numberofLang = 0
     for language in languages:
         pieChart.add(language, languages[language])
         numberofLang = numberofLang + 1
-    pieChart.render_in_browser() 
+    # Open bar chart in browser
+    pieChart.render_in_browser()
+    # Save chart inside folder for easier viewing 
     pieChart.render_to_file('OutputtedCharts/languagePieChart.svg')
 
-
+    # BarChart for Visualising Commit count
     barChart = pygal.Bar(set_Syling,style = DRKS)
+    # Title of Bar Chart
     barChart.title = f"Github Repositories owned by {githubUser.login} and Commits of each Repository"
+    # Define x axis of chart
     barChart.x_labels = namesOfRepos
+    # Add the data accessed from github onto bar chart
     barChart.add("", numberOfCommits)
+    # Open bar chart in browser
     barChart.render_in_browser()
+    # Save chart inside folder for easier viewing 
+    # If OAuth Token is invalid or not enter code execution will be ratelimited so after 
+    # each execution relevent charts generated will be saved in the folder.
     barChart.render_to_file('OutputtedCharts/commitsBarChart.svg')
