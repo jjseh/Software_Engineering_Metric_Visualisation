@@ -146,4 +146,10 @@ if __name__ == '__main__':
         count = count + 1
     stackChart.render_in_browser()
 
+    pieChart = pygal.Pie(style = DRKS)
+    numberofLang = 0
+    for language in languages:
+        pieChart.add(language, languages[language])
+        numberofLang = numberofLang + 1
+    pieChart.render_in_browser()
 
