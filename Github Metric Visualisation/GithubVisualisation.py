@@ -1,6 +1,7 @@
 from github import Github
 from pprint import pprint
 import pygal
+from pygal.style import DarkSolarizedStyle as DRKS
 #import base64
 
 
@@ -135,7 +136,14 @@ for reps in listOfRepositories:
     namesOfRepos.append(reps)
     numberOfCommits.append(listOfRepositories[reps])
 
-#if __name__ == '__main__':
-
+if __name__ == '__main__': 
+    stackChart = pygal.StackedBar(style = DRKS)
+    stackChart.width = 1600
+    stackChart.height = 740
+    count = 0
+    for name in namesOfRepos:
+        stackChart.add(name, startCount[count])
+        count = count + 1
+    stackChart.render_in_browser()
 
 
