@@ -16,6 +16,17 @@ from pygal.style import DarkSolarizedStyle as DRKS
 # pprint(collected_data)
 # 
 
+# Set the styling, used to visualise the collected data
+set_Syling = pygal.Config()
+set_Syling.width = 1030
+set_Syling.height = 485
+set_Syling.truncate_label = 15
+set_Syling.x_label_rotation = 45
+set_Syling.show_y_guides = False
+set_Syling.show_legend = False
+set_Syling.title_font_size = 25
+set_Syling.label_font_size = 15
+set_Syling.major_label_font = 18
 
 # Accessing Github API
 github_username = input("Enter Github username: ")
@@ -137,23 +148,30 @@ for reps in listOfRepositories:
     numberOfCommits.append(listOfRepositories[reps])
 
 if __name__ == '__main__': 
+    
     stackChart = pygal.StackedBar(style = DRKS)
     stackChart.width = 1600
     stackChart.height = 740
+    stackChart.title = f"Number of Stars for each Github Repository owned by {githubUser.login}"
     count = 0
     for name in namesOfRepos:
         stackChart.add(name, startCount[count])
         count = count + 1
     stackChart.render_in_browser()
 
-    pieChart = pygal.Pie(style = DRKS)
+    pieChart = pygal.Pie(inner_radius=.4, style = DRKS)
+    pieChart.width = 1600
+    pieChart.height = 740
+    pieChart.title = f"Number of Github Repositories owned by {githubUser.login} using a certain Language."
     numberofLang = 0
     for language in languages:
         pieChart.add(language, languages[language])
         numberofLang = numberofLang + 1
     pieChart.render_in_browser()
 
-    barChart = pygal.Bar(style = DRKS)
+    
+    barChart = pygal.Bar(set_Syling,style = DRKS)
+    barChart.title = f"Github Repositories owned by {githubUser.login} and Commits of each Repository"
     barChart.x_labels = namesOfRepos
     barChart.add("", numberOfCommits)
     barChart.render_in_browser()
