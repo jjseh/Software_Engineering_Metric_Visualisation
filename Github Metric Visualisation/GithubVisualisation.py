@@ -171,6 +171,7 @@ if __name__ == '__main__':
     # Save chart inside folder for easier viewing 
     stackChart.render_to_file('OutputtedCharts/starsChart.svg')
   
+  
     # print(" ")
     # Pie chart for Visualise Languagues count
     pieChart = pygal.Pie(inner_radius=.4, style = DRKS)
@@ -188,6 +189,7 @@ if __name__ == '__main__':
     pieChart.render_in_browser()
     # Save chart inside folder for easier viewing 
     pieChart.render_to_file('OutputtedCharts/languagePieChart.svg')
+
 
     # BarChart for Visualising Commit count
     barChart = pygal.Bar(set_Syling,style = DRKS)
