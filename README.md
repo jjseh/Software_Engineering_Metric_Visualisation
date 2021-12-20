@@ -15,3 +15,13 @@ be ratelimited.
 6. The visusalisation graphs will open in the browser.
 7. All created charts will be saved as an .svg file in the folder called "OutputtedCharts" for easier access and viewing.
 8. These files will be rewritten each time the code is run.
+
+
+## Example of Running Code
+<img src="Github Metric Visualisation/OutputtedCharts/starsChart.svg"> 
+
+
+<img src="Github Metric Visualisation/OutputtedCharts/languagePieChart.svg"> 
+
+
+<img src="Github Metric Visualisation/OutputtedCharts/commitsBarChart.svg"> 
