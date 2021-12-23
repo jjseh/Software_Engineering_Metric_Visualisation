@@ -7,7 +7,7 @@
 
 ## Instructions to run Code
 1. Clone the repository 
-2. Open terminal and cd into Github Visualisation Metric.
+2. Open terminal and cd into Github Metric Visualisation.
 3. Install all the dependancies required to run the code. Use command ```pip install -r requirements.txt``` to install all the dependancies.
 4. Use ```python GithubVisualisation.py``` to run the program.
 5. Enter Github username and OAuth Token as prompted. You can enter just your username and skip the token but it will
